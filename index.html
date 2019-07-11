@@ -30,103 +30,6 @@
       <div class="container">
         <div id="categories-body" class="row">
 
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <div class="bg-secondary" style="height: 100px;"></div>
-              <div class="card-header">
-                <h1>Category Name</h1>
-              </div>
-              <div class="card-body">
-                <p class="card-text">Short Description</p>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         <button id="add-category-button" class="btn btn-info">Add New Category</button>
@@ -145,6 +48,12 @@
     </div>
   </footer>
 
+  <script src="services/categories.js"></script>
+  <script>
+    $(document).ready(function () {
+      categories.load();
+    });
+  </script>
 </body>
 
 </html>

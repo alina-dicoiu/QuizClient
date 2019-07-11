@@ -1,3 +1,20 @@
+$(document).ready(function () {
+
+    $("#save-category-button").click(function () {
+        let title = $("#category-title").val();
+
+        let post = {
+            Name : title
+        }
+
+        $("#category-title").val("");
+
+        categories.save(post);
+    })
+
+ });
+
+
 var categories = (function () {
 
     function loadCategories() {
@@ -46,7 +63,23 @@ var categories = (function () {
         </div>`;
     }
 
+    function saveCategory(data) {
+        return $.ajax("https://localhost:44356/api/Categories/Add", {
+            method: "POST",
+            dataType: "json",
+            data: data
+        })
+            .done(function (data, status, jqXHR) {
+                $("#categories-body").append(newCardForCategory(data));
+                $("#add-category-modal").modal('toggle');
+            })
+            .fail(function (jqXHR, status, error) {
+                console.log(error);
+            })
+    }
+
     return {
-        load: loadCategories
+        load: loadCategories,
+        save: saveCategory
     }
 })();

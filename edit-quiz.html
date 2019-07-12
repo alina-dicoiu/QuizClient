@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>QuizMaster</title>
+
+  <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="./assets/libs/jquery-3.4.1.js"></script>
+  <script src="./assets/libs/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="jumbotron text-center" id="mainHeader" style="background-image: url('headerimg.jpg');background-size: cover">
+      <div class="container">
+        <h1 class="display-4">QuizMaster</h1>
+        <p class="lead">Take a quiz. Or make one if you feel particularly smart.</p>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <div id = "container">
+        <h1 id = "categoryTitle">
+        
+        </h1>
+
+        <div id = "questionsContainer">
+
+        </div>
+    </div>
+
+  </main>
+
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Practica NTT DATA 2019</p>
+    </div>
+  </footer>
+
+  <script src="services/editQuiz.js"></script>
+  <script>
+    $(document).ready(function () {
+        let searchParams = new URLSearchParams(window.location.search)
+        let categoryId = searchParams.get('id');
+
+      editQuiz.loadCategory(categoryId);
+      editQuiz.loadQuestions(categoryId);
+    });
+  </script>
+</body>
+
+</html>

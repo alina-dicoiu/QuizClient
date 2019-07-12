@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Take this quiz!</title>
+
+  <link rel="stylesheet" href="./assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="./assets/libs/jquery-3.4.1.js"></script>
+  <script src="./assets/libs/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron text-center" id="mainHeader" style="background-image: url('headerimg.jpg');background-size: cover">
+          <div class="container">
+            <h1 class="display-4">QuizMaster</h1>
+          </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div id="questions-body" class="row">
+    
+            </div>
+    
+            <button id="submit-button" class="btn btn-info" data-toggle="modal" data-target="#add-category-modal" style="margin: 15px">Submit answers</button>
+          </div>
+    
+        </div>
+    
+      </main>
+
+    <footer class="text-muted">
+        <div class="container">
+          <p class="float-right">
+            <a href="#">Back to top</a>
+          </p>
+          <p>Practica NTT DATA 2019</p>
+        </div>
+      </footer>
+      <script src="services/takeQuiz.js"></script>
+</body>

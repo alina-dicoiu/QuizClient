@@ -66,8 +66,8 @@ var categories = (function () {
                 <div class="card-body">
                     <p class="card-text">${description}</p>
                     <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button>
+                    <a href=./edit-quiz.html?id=${category.Id}> <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button></a>
+                    <a href=./take-quiz.html?id=${category.Id}><button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button></a>
                     </div>
                 </div>
                 </div>

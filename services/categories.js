@@ -20,7 +20,13 @@ $(document).ready(function () {
         let categoryID = this.getAttribute("data-id");
 
         $("#delete-category-button").off("click").on("click", function(){
+<<<<<<< Updated upstream
             categories.delete(categoryID);    
+=======
+            
+            categories.delete(categoryID);
+    
+>>>>>>> Stashed changes
         })
     });
  });

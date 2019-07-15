@@ -7,6 +7,7 @@ var editQuiz = (function () {
         .done(function (data, status, jqXHR) {
             $("#mainHeaderText").append(`<h2 align="center">${data.Name}</h2>`);
 
+<<<<<<< Updated upstream
         })
         .fail(function (jqXHR, status, error) {
             $("#questions-body").append(newErrorMessage());
@@ -28,6 +29,29 @@ var editQuiz = (function () {
     return {
         loadCategory: loadCategories,
         loadQuestions: loadQuestions
+=======
+    }
+
+    return {
+        loadCategory: loadCategories,
+        loadQuestions: loadQuestions,
+        saveQuestion: saveQuestion
+    }
+
+    function saveQuestion(data){
+        return $.ajax("https://localhost:44356/api/Questions/Add", {
+            method: "POST",
+            dataType: "json",
+            data: data
+        })
+            .done(function (data, status, jqXHR) {
+                $("#questionsContainer").append(newCardForQuestion(data));
+                $("#add-question-modal").modal('toggle');
+            })
+            .fail(function (jqXHR, status, error) {
+                console.log(error);
+            })
+>>>>>>> Stashed changes
     }
 
     function deleteQuestion(id){
@@ -75,7 +99,11 @@ var editQuiz = (function () {
             Answers += newListItem(Question.PossibleAnswers[i]);
         }
         return `
+<<<<<<< Updated upstream
             <div class="card"  data-id=${Question.Id}>
+=======
+            <div class="card">
+>>>>>>> Stashed changes
             <div class="card-header">
                 ${Question.Text}
             </div>
@@ -92,17 +120,25 @@ var editQuiz = (function () {
             
             `;
     }
+<<<<<<< Updated upstream
 
 
 
 
 
+=======
+
+>>>>>>> Stashed changes
     function newListItem(Answer) {
         let styleClass = "incorrect";
         if (Answer.Correct == true)
             styleClass = "correct";
         return `<li class="list-group-item ${styleClass}">${Answer.Text}</li>`
     }
+<<<<<<< Updated upstream
 
 })();
+=======
+>>>>>>> Stashed changes
 
+})(); 

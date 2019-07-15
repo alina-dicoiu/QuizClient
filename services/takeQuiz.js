@@ -10,11 +10,10 @@ function loadQuestions(id){
             dataType: "json"
         })
             .done(function (data, status, jqXHR) {
-                $("#questions-body").append(createHeader(id));
+                createHeader(id);
                 for (let i = 0; i < data.length; i++) {
                     $("#questions-body").append(newCardForQuestion(data[i]));
                 }
-
             })
             .fail(function (jqXHR, status, error) {
                 $("#questions-body").append(newErrorMessage());
@@ -27,7 +26,7 @@ function createHeader(id){
             dataType: "json"
         })
             .done(function (data, status, jqXHR) {
-                return `<h2>${data.Name}</h2>`
+                $("#mainHeaderText").append(`<h2 align="center">${data.Name}</h2>`);
 
             })
             .fail(function (jqXHR, status, error) {
@@ -57,10 +56,9 @@ function newCardForQuestion(question){
         answers += newListItem(question.PossibleAnswers[i], answerName);
         answerName = String.fromCharCode(answerName.charCodeAt(0) + 1);
         answers += " ";
-        console.log(answers[i] + '\n');
     }
     return `
-    <div class="card" style="width: 20rem; margin-left: 5px">
+    <div class="card">
         <div class="card-header">
             ${questionText}
         </div>

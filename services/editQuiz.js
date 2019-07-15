@@ -4,9 +4,13 @@ var editQuiz = (function () {
             method: "GET",
             dataType: "json"
         })
-            .done(function (data, status, jqXHR) {
-                $("#categoryTitle").html(data.Name);
-            })
+        .done(function (data, status, jqXHR) {
+            $("#mainHeaderText").append(`<h2 align="center">${data.Name}</h2>`);
+
+        })
+        .fail(function (jqXHR, status, error) {
+            $("#questions-body").append(newErrorMessage());
+        });
 
     }
 

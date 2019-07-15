@@ -5,8 +5,8 @@ $(document).ready(function () {
         let id = $("#category-id").val();
 
         let post = {
-            Name: title,
-            Id: id
+            Name : title,
+            Id : id
         }
 
         $("#category-title").val("");
@@ -15,16 +15,15 @@ $(document).ready(function () {
         categories.save(post);
     })
 
-    $(document).on("click", "#help", function () {
-
+    $(document).on("click", "#help",function() {
+        
         let categoryID = this.getAttribute("data-id");
 
-        $("#delete-category-button").off("click").on("click", function () {
-            categories.delete(categoryID);
+        $("#delete-category-button").off("click").on("click", function(){
+            categories.delete(categoryID);    
         })
-
     });
-});
+ });
 
 
 var categories = (function () {
@@ -56,7 +55,7 @@ var categories = (function () {
                 </button>
                 </div>
                 <div class="card-header">
-                    <h1>${category.Name}</h1>
+                    <h2>${category.Name}</h2>
                 </div>
                 <div class="card-body">
                     <p class="card-text">${description}</p>
@@ -69,7 +68,7 @@ var categories = (function () {
             </div>`;
     }
 
-    function newErrorMessage() {
+    function newErrorMessage(){
         return `
         <div class="alert alert-danger categories-error" role="alert">
             Could not load categories from server.
@@ -94,25 +93,25 @@ var categories = (function () {
     function deleteCategory(id) {
 
         return $.ajax("https://localhost:44356/api/Categories/Delete/" + id, {
-            method: "DELETE",
-            dataType: "json"
+                method: "DELETE",
+                dataType: "json"
         })
-
-            .done(function (data, status, jqXHR) {
-                $(".col-md-4[data-id=" + id + "]").remove();
-                $("#delete-category-modal").modal('toggle');
-            })
-
-            .fail(function (jqXHR, status, error) {
-                console.log(error);
-            })
-
-
+    
+        .done(function (data, status, jqXHR) { 
+            $(".col-md-4[data-id="+id+"]").remove();
+            $("#delete-category-modal").modal('toggle');
+        })
+    
+        .fail(function (jqXHR, status, error) {
+            console.log(error);
+        })
+    
+    
     }
 
     return {
         load: loadCategories,
         save: saveCategory,
-        delete: deleteCategory
+        delete : deleteCategory
     }
 })();

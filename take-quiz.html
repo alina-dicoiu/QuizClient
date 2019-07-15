@@ -17,7 +17,7 @@
 <body>
     <header>
         <div class="jumbotron text-center" id="mainHeader" style="background-image: url('headerimg.jpg');background-size: cover">
-          <div class="container">
+          <div class="container" id="mainHeaderText">
             <h1 class="display-4">QuizMaster</h1>
           </div>
         </div>
@@ -27,11 +27,13 @@
 
         <div class="album py-5 bg-light">
           <div class="container">
-            <div id="questions-body" class="row">
+            <div id="questions-body" class="col">
     
             </div>
     
             <button id="submit-button" class="btn btn-info" data-toggle="modal" data-target="#add-category-modal" style="margin: 15px">Submit answers</button>
+          
+            <a href="index.html"><button id="home-button" class="btn btn-info" style="margin: 15px; float: right">Return to main page</button></a>
           </div>
     
         </div>

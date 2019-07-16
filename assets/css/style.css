@@ -21,3 +21,13 @@
     color: rgb(62, 206, 62);
     font-weight: bold;
 }
+
+.right{
+    background-color: rgb(62, 206, 62);
+    font-weight: bold;
+}
+
+.wrong {
+    background-color: rgb(219, 23, 23);
+    font-weight: bold;
+}

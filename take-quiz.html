@@ -15,38 +15,60 @@
 </head>
 
 <body>
-    <header>
-        <div class="jumbotron text-center" id="mainHeader" style="background-image: url('headerimg.jpg');background-size: cover">
-          <div class="container" id="mainHeaderText">
-            <h1 class="display-4">QuizMaster</h1>
-          </div>
-        </div>
-    </header>
+  <header>
+    <div class="jumbotron text-center" id="mainHeader"
+      style="background-image: url('headerimg.jpg');background-size: cover">
+      <div class="container" id="mainHeaderText">
+        <h1 class="display-4">QuizMaster</h1>
+      </div>
+    </div>
+  </header>
 
-    <main role="main">
+  <main role="main">
 
-        <div class="album py-5 bg-light">
-          <div class="container">
-            <div id="questions-body" class="col">
-    
-            </div>
-    
-            <button id="submit-button" class="btn btn-info" data-toggle="modal" data-target="#add-category-modal" style="margin: 15px">Submit answers</button>
-          
-            <a href="index.html"><button id="home-button" class="btn btn-info" style="margin: 15px; float: right">Return to main page</button></a>
-          </div>
-    
-        </div>
-    
-      </main>
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div id="questions-body" class="col">
 
-    <footer class="text-muted">
-        <div class="container">
-          <p class="float-right">
-            <a href="#">Back to top</a>
-          </p>
-          <p>Practica NTT DATA 2019</p>
         </div>
-      </footer>
-      <script src="services/takeQuiz.js"></script>
+
+        <button id="submit-button" class="btn btn-info" data-toggle="modal" data-target="#add-category-modal"
+          style="margin: 15px">Submit answers</button>
+
+        <a href="index.html"><button id="home-button" class="btn btn-info" style="margin: 15px; float: right">Return to
+            main page</button></a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div class="modal" tabindex="-1" role="dialog" id="scoreDialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Your score</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="scoreText">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-left: 45%;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Practica NTT DATA 2019</p>
+    </div>
+  </footer>
+  <script src="services/takeQuiz.js"></script>
 </body>

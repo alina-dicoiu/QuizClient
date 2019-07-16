@@ -5,32 +5,22 @@ $(document).ready(function () {
         let id = $("#category-id").val();
 
         let post = {
-            Name : title,
-            Id : id
+            Name: title,
+            Id: id
         }
 
         $("#category-title").val("");
         $("#category-id").val("");
-
         categories.save(post);
     })
 
-    $(document).on("click", "#help",function() {
-        
+    $(document).on("click", "#help", function () {
         let categoryID = this.getAttribute("data-id");
-
-        $("#delete-category-button").off("click").on("click", function(){
-<<<<<<< Updated upstream
-            categories.delete(categoryID);    
-=======
-            
+        $("#delete-category-button").off("click").on("click", function () {
             categories.delete(categoryID);
-    
->>>>>>> Stashed changes
         })
     });
- });
-
+});
 
 var categories = (function () {
 
@@ -53,12 +43,12 @@ var categories = (function () {
     function newCardForCategory(category) {
         let description = "How much do you know about " + category.Name + "? Take this quiz to find out!";
         return `          
-            <div class="col-md-4" data-id=${category.Id}>
-                <div class="card mb-4 shadow-sm">
+        <div class="col-md-4" data-id=${category.Id}>
+            <div class="card mb-4 shadow-sm">
                 <div class="bg-secondary category-header">
-                <button type="button" class="close" id="help" data-id=${category.Id} data-toggle="modal" data-target="#delete-category-modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <button type="button" class="close" id="help" data-id=${category.Id} data-toggle="modal" data-target="#delete-category-modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="card-header">
                     <h2>${category.Name}</h2>
@@ -66,15 +56,15 @@ var categories = (function () {
                 <div class="card-body">
                     <p class="card-text">${description}</p>
                     <div class="btn-group">
-                    <a href=./edit-quiz.html?id=${category.Id}> <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button></a>
-                    <a href=./take-quiz.html?id=${category.Id}><button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button></a>
+                        <a href=./edit-quiz.html?id=${category.Id}> <button type="button" class="btn btn-sm btn-outline-secondary">Edit Quiz</button></a>
+                        <a href=./take-quiz.html?id=${category.Id}><button type="button" class="btn btn-sm btn-outline-secondary">Take Quiz</button></a>
                     </div>
                 </div>
-                </div>
-            </div>`;
+            </div>
+        </div>`;
     }
 
-    function newErrorMessage(){
+    function newErrorMessage() {
         return `
         <div class="alert alert-danger categories-error" role="alert">
             Could not load categories from server.
@@ -99,25 +89,22 @@ var categories = (function () {
     function deleteCategory(id) {
 
         return $.ajax("https://localhost:44356/api/Categories/Delete/" + id, {
-                method: "DELETE",
-                dataType: "json"
+            method: "DELETE",
+            dataType: "json"
         })
-    
-        .done(function (data, status, jqXHR) { 
-            $(".col-md-4[data-id="+id+"]").remove();
-            $("#delete-category-modal").modal('toggle');
-        })
-    
-        .fail(function (jqXHR, status, error) {
-            console.log(error);
-        })
-    
-    
+            .done(function (data, status, jqXHR) {
+                $(".col-md-4[data-id=" + id + "]").remove();
+                $("#delete-category-modal").modal('toggle');
+            })
+
+            .fail(function (jqXHR, status, error) {
+                console.log(error);
+            })
     }
 
     return {
         load: loadCategories,
         save: saveCategory,
-        delete : deleteCategory
+        delete: deleteCategory
     }
 })();

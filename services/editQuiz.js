@@ -20,10 +20,31 @@ var editQuiz = (function () {
         })
     });
 
+    $(document).on("click", ".edit-question-button", function () {
+        let QuestionId = this.getAttribute("data-id");
+
+        loadQuestion(QuestionId);
+
+    });
+
+
+
+    function loadCategories(Id) {
+        $.ajax("https://localhost:44356/api/Categories/ById/" + Id, {
+                method: "GET",
+                dataType: "json"
+            })
+            .done(function (data, status, jqXHR) {
+                $("#categoryTitle").html(data.Name);
+            })
+
+    }
+
     return {
         loadCategory: loadCategories,
         loadQuestions: loadQuestions,
-        saveQuestion: saveQuestion
+        saveQuestion: saveQuestion,
+        PutQuestion: PutQuestion
     }
 
     function saveQuestion(data){
@@ -53,17 +74,17 @@ var editQuiz = (function () {
             .fail(function (jqXHR, status, error) {
                 console.log(error);
             })
+       
     }
 
     function loadQuestions(Id) {
         $.ajax("https://localhost:44356/api/Questions/ByCategory/" + Id, {
-            method: "GET",
-            dataType: "json"
-        })
+                method: "GET",
+                dataType: "json"
+            })
             .done(function (data, status, jqXHR) {
                 for (let i = 0; i < data.length; i++)
                     $("#questionsContainer").append(newCardForQuestion(data[i]));
-                debugger;
             })
             .fail(function (jqXHR, status, error) {
                 $("#questionsContainer").append(newErrorMessage());
@@ -93,7 +114,7 @@ var editQuiz = (function () {
                 </ul>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary edit-post-button" data-toggle="modal" data-target="#edit-post-modal" data-id=${Question.Id}>Edit</button>
+                <button class="btn btn-primary edit-question-button" data-toggle="modal" data-target="#edit-question-modal" data-id=${Question.Id}>Edit</button>
                 <button class="btn btn-danger delete-post-button" data-toggle="modal" data-target="#delete-question-modal" data-id=${Question.Id}>Delete</button>
             </div>
         </div>`;
@@ -104,4 +125,52 @@ var editQuiz = (function () {
             styleClass = "correct";
         return `<li class="list-group-item ${styleClass}">${Answer.Text}</li>`
     }
+
+    function loadQuestion(id) {
+
+        $.ajax("https://localhost:44356/api/Questions/ById/" + id, {
+                method: "GET",
+                dataType: "json"
+            })
+            .done(function (data, status, jqXHR) {
+                $("#question-text").val(data.Text);
+                $("#edit-option1").val(data.PossibleAnswers[0].Text);
+                $("#edit-option2").val(data.PossibleAnswers[1].Text);
+                $("#edit-option3").val(data.PossibleAnswers[2].Text);
+                $("#edit-option4").val(data.PossibleAnswers[3].Text);
+
+                $("#edit-option1").attr("data-id", data.PossibleAnswers[0].Id);
+                $("#edit-option1").attr("data-question-id", data.PossibleAnswers[0].QuestionId);
+
+                $("#edit-option2").attr("data-id", data.PossibleAnswers[1].Id);
+                $("#edit-option2").attr("data-question-id", data.PossibleAnswers[1].QuestionId);
+
+                $("#edit-option3").attr("data-id", data.PossibleAnswers[2].Id);
+                $("#edit-option3").attr("data-question-id", data.PossibleAnswers[2].QuestionId);
+
+                $("#edit-option4").attr("data-id", data.PossibleAnswers[3].Id);
+                $("#edit-option4").attr("data-question-id", data.PossibleAnswers[3].QuestionId);
+            })
+
+    }
+
+    function PutQuestion(id, put) {
+        $.ajax("https://localhost:44356/api/Questions/Update/" + id, {
+                method: "PUT",
+                dataType: "json",
+                data: put
+            })
+            .done(function (data, status, jqXHR) {
+                $("#questionsContainer").html("");
+                let searchParams = new URLSearchParams(window.location.search)
+                let categoryId = searchParams.get('id');
+                loadQuestions(categoryId);
+                $("#edit-question-modal").modal("toggle");
+            })
+            .fail(function (jqXHR, status, error) {
+
+            })
+
+    };
+
 })();

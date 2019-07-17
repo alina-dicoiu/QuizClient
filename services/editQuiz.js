@@ -35,7 +35,7 @@ var editQuiz = (function () {
                 dataType: "json"
             })
             .done(function (data, status, jqXHR) {
-                $("#categoryTitle").html(data.Name);
+                $("#mainHeaderText").append(`<h2>${data.Name}<h2>`);
             })
 
     }

@@ -79,7 +79,7 @@ function newListItem(answer, answerName) {
                     <input type="radio" data-id="${answer.Id}" data-question-id="${answer.QuestionId}" name="${answer.QuestionId}" aria-label=${answerName}>${answerName}
                 </div>
             </div>
-            <input type="text" class="form-control" value=${answer.Text} readonly/>
+            <input type="text" class="form-control" value="${answer.Text}" readonly/>
         </div>
     </li>`;
 }

@@ -21,11 +21,17 @@ var editQuiz = (function () {
     });
 
     $(document).on("click", ".edit-question-button", function () {
+        $("#edit-error-message").html("");
         let QuestionId = this.getAttribute("data-id");
 
         loadQuestion(QuestionId);
 
     });
+
+    $(document).on("click", ".add-button", function () {
+        $("#add-error-message").html("");
+    });
+
 
 
 

@@ -126,9 +126,12 @@
               </div>
             </div>
           </form>
+          <div id = "add-error-message">
+
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" id= "cancel-add-button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           <button type="button" id="save-question-button" class="btn btn-primary">Submit</button>
         </div>
       </div>
@@ -209,6 +212,10 @@
               </div>
             </div>
           </form>
+
+          <div id="edit-error-message">
+
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -229,6 +236,7 @@
 
 
       $("#save-question-button").click(function () {
+        $("#add-error-message").html("");
         let questiontext = $("#questiontext").val();
         let option1 = $("#option1").val();
         let option2 = $("#option2").val();
@@ -240,7 +248,27 @@
         let answer3 = $("#answer3").is(":checked");
         let answer4 = $("#answer4").is(":checked");
 
-        let question = {
+        if (questiontext == "" || option1 == "" || option2 == "" || option3 ==
+          "" || option4 == "") {
+            let error = `
+        <div class="alert alert-danger " role="alert">
+          You did not fill in all the fields!
+        </div>`;
+        $("#add-error-message").html(error);
+          }
+          else
+        {
+          if(answer1 == false && answer2 == false && answer3 == false && answer4 == false)
+          {
+            let error = `
+        <div class="alert alert-danger " role="alert">
+          You did not check the correct answer!
+        </div>`;
+        $("#add-error-message").html(error);
+          }
+          else
+          {
+            let question = {
           Text: questiontext,
           CategoryId: categoryId,
           Answers: [{
@@ -276,57 +304,86 @@
 
 
         editQuiz.saveQuestion(question);
+          }
+        }
       })
+      
+      $(document).on("click", "#cancel-add-button", function () {
+        $("#add-error-message").html("");
+        $("#questiontext").val("");
+        $("#option1").val("");
+        $("#option2").val("");
+        $("#option3").val("");
+        $("#option4").val("");
+
+        $("#answer1").prop("checked", false);
+        $("#answer2").prop("checked", false);
+        $("#answer3").prop("checked", false);
+        $("#answer4").prop("checked", false);
+      })
+
       $(document).on("click", "#submit-question-button", function () {
+        $("#edit-error-message").html("");
         let QuestionText = $("#question-text").val();
         let PossibleAnswer1 = $("#edit-option1").val();
         let PossibleAnswer2 = $("#edit-option2").val();
         let PossibleAnswer3 = $("#edit-option3").val();
         let PossibleAnswer4 = $("#edit-option4").val();
 
-        let questionId = $("#edit-option1").attr("data-question-id");
-        let answer1Id = $("#edit-option1").attr("data-id");
-        let answer2Id = $("#edit-option2").attr("data-id");
-        let answer3Id = $("#edit-option3").attr("data-id");
-        let answer4Id = $("#edit-option4").attr("data-id");
-
         let answer1 = $("#edit-answer1").is(":checked");
         let answer2 = $("#edit-answer2").is(":checked");
         let answer3 = $("#edit-answer3").is(":checked");
         let answer4 = $("#edit-answer4").is(":checked");
 
-        let Put = {
-          Id: questionId,
-          Text: QuestionText,
-          CategoryId: categoryId,
-          Answers: [{
-              Id: answer1Id,
-              Text: PossibleAnswer1,
-              QuestionId: questionId,
-              Correct: answer1
-            },
-            {
-              Id: answer2Id,
-              Text: PossibleAnswer2,
-              QuestionId: questionId,
-              Correct: answer2
-            },
-            {
-              Id: answer3Id,
-              Text: PossibleAnswer3,
-              QuestionId: questionId,
-              Correct: answer3
-            },
-            {
-              Id: answer4Id,
-              Text: PossibleAnswer4,
-              QuestionId: questionId,
-              Correct: answer4
-            }
-          ]
+        if (QuestionText == "" || PossibleAnswer1 == "" || PossibleAnswer2 == "" || PossibleAnswer3 ==
+          "" || PossibleAnswer4 == "") {
+          let error = `
+        <div class="alert alert-danger " role="alert">
+            You did not fill in all the fields!
+        </div>`;
+          $("#edit-error-message").append(error);
+        } else {
+          let questionId = $("#edit-option1").attr("data-question-id");
+          let answer1Id = $("#edit-option1").attr("data-id");
+          let answer2Id = $("#edit-option2").attr("data-id");
+          let answer3Id = $("#edit-option3").attr("data-id");
+          let answer4Id = $("#edit-option4").attr("data-id");
+
+
+          let Put = {
+            Id: questionId,
+            Text: QuestionText,
+            CategoryId: categoryId,
+            Answers: [{
+                Id: answer1Id,
+                Text: PossibleAnswer1,
+                QuestionId: questionId,
+                Correct: answer1
+              },
+              {
+                Id: answer2Id,
+                Text: PossibleAnswer2,
+                QuestionId: questionId,
+                Correct: answer2
+              },
+              {
+                Id: answer3Id,
+                Text: PossibleAnswer3,
+                QuestionId: questionId,
+                Correct: answer3
+              },
+              {
+                Id: answer4Id,
+                Text: PossibleAnswer4,
+                QuestionId: questionId,
+                Correct: answer4
+              }
+            ]
+          }
+
+          editQuiz.PutQuestion(questionId, Put)
         }
 
-        editQuiz.PutQuestion(questionId, Put)
 
       });
     });

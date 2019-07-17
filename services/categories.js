@@ -1,17 +1,30 @@
 $(document).ready(function () {
 
     $("#save-category-button").click(function () {
+        $("#add-category-alert").html("");
         let title = $("#category-title").val();
         let id = $("#category-id").val();
 
-        let post = {
-            Name: title,
-            Id: id
-        }
+        if (title == "") {
+            let error = `
+            <div class="alert alert-danger " role="alert">
+                You did not fill in the field!
+            </div>`;
+            $("#add-category-alert").append(error);
+        } else {
+            let post = {
+                Name: title,
+                Id: id
+            }
 
+            $("#category-title").val("");
+            $("#category-id").val("");
+            categories.save(post);
+        }
+    })
+    $("#cancel-add-category-button").click(function () {
+        $("#add-category-alert").html("");
         $("#category-title").val("");
-        $("#category-id").val("");
-        categories.save(post);
     })
 
     $(document).on("click", "#help", function () {
@@ -26,9 +39,9 @@ var categories = (function () {
 
     function loadCategories() {
         $.ajax("https://localhost:44356/api/Categories/All", {
-            method: "GET",
-            dataType: "json"
-        })
+                method: "GET",
+                dataType: "json"
+            })
             .done(function (data, status, jqXHR) {
                 for (let i = 0; i < data.length; i++) {
                     $("#categories-body").append(newCardForCategory(data[i]));
@@ -73,10 +86,10 @@ var categories = (function () {
 
     function saveCategory(data) {
         return $.ajax("https://localhost:44356/api/Categories/Add", {
-            method: "POST",
-            dataType: "json",
-            data: data
-        })
+                method: "POST",
+                dataType: "json",
+                data: data
+            })
             .done(function (data, status, jqXHR) {
                 $("#categories-body").append(newCardForCategory(data));
                 $("#add-category-modal").modal('toggle');
@@ -89,9 +102,9 @@ var categories = (function () {
     function deleteCategory(id) {
 
         return $.ajax("https://localhost:44356/api/Categories/Delete/" + id, {
-            method: "DELETE",
-            dataType: "json"
-        })
+                method: "DELETE",
+                dataType: "json"
+            })
             .done(function (data, status, jqXHR) {
                 $(".col-md-4[data-id=" + id + "]").remove();
                 $("#delete-category-modal").modal('toggle');

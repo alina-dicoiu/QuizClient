@@ -33,7 +33,7 @@
       </div>
       <button id="add-button" class="btn btn-info" data-toggle="modal" data-target="#add-question-modal"
         style="margin: 15px">Add New Question</button>
-        <BR>
+      <BR>
       <a href="index.html"><button id="home-button" class="btn btn-info"
           style="margin-left: 45%; margin-top: 15px; margin-bottom: 15px">Return to main page</button></a>
     </div>
@@ -77,37 +77,53 @@
               <label for="question-title">Question Text</label>
               <input type="text" class="form-control" id="questiontext">
             </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form>
             <div class="form-group">
               <label for="question-title1">First Option</label>
-              <input type="text" class="form-control" id="option1">
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="answer1" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="option1">
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form>
+
             <div class="form-group">
               <label for="question-title2">Second Option</label>
-              <input type="text" class="form-control" id="option2">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="answer2" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="option2">
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form>
+
             <div class="form-group">
               <label for="question-title3">Third Option</label>
-              <input type="text" class="form-control" id="option3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="answer3" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="option3">
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-body">
-          <form>
+
             <div class="form-group">
               <label for="question-title4">Fourth Option</label>
-              <input type="text" class="form-control" id="option4">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="answer4" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="option4">
+              </div>
             </div>
           </form>
         </div>
@@ -129,46 +145,78 @@
   </footer>
 
   <div class="modal fade" id="edit-question-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="category-title">Question Text</label>
-            <input type="text" class="form-control" id="question-text">
-          </div>
-          <div class="form-group">
-            <label for="category-title">Option One</label>
-            <input type="text" class="form-control" id="edit-option1">
-          </div>
-          <div class="form-group">
-            <label for="category-title">Option Two</label>
-            <input type="text" class="form-control" id="edit-option2">
-          </div>
-          <div class="form-group">
-            <label for="category-title">Option Three</label>
-            <input type="text" class="form-control" id="edit-option3">
-          </div>
-          <div class="form-group">
-            <label for="category-title">Option Four</label>
-            <input type="text" class="form-control" id="edit-option4">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" id="submit-question-button" class="btn btn-primary">Submit</button>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Question</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="category-title">Question Text</label>
+              <input type="text" class="form-control" id="question-text">
+            </div>
+            <div class="form-group">
+              <label for="question-title1">First Option</label>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="edit-answer1" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="edit-option1">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="question-title2">Second Option</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="edit-answer2" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="edit-option2">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="question-title3">Third Option</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="edit-answer3" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="edit-option3">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="question-title4">Fourth Option</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" id="edit-answer4" name="Answers">
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="edit-option4">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" id="submit-question-button" class="btn btn-primary">Submit</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <script src="services/editQuiz.js"></script>
   <script>
@@ -187,36 +235,44 @@
         let option3 = $("#option3").val();
         let option4 = $("#option4").val();
 
+        let answer1 = $("#answer1").is(":checked");
+        let answer2 = $("#answer2").is(":checked");
+        let answer3 = $("#answer3").is(":checked");
+        let answer4 = $("#answer4").is(":checked");
 
         let question = {
           Text: questiontext,
           CategoryId: categoryId,
-          Answers: [
-            {
+          Answers: [{
               Text: option1,
-              Correct: false
+              Correct: answer1
             },
             {
               Text: option2,
-              Correct: false
+              Correct: answer2
             },
             {
               Text: option3,
-              Correct: false
+              Correct: answer3
             },
             {
               Text: option4,
-              Correct: false
+              Correct: answer4
             }
           ]
 
         }
 
-        $("#question-title").val("");
-        $("#question-title1").val("");
-        $("#question-title2").val("");
-        $("#question-title3").val("");
-        $("#question-title4").val("");
+        $("#questiontext").val("");
+        $("#option1").val("");
+        $("#option2").val("");
+        $("#option3").val("");
+        $("#option4").val("");
+
+        $("#answer1").prop("checked", false);
+        $("#answer2").prop("checked", false);
+        $("#answer3").prop("checked", false);
+        $("#answer4").prop("checked", false);
 
 
         editQuiz.saveQuestion(question);
@@ -234,6 +290,11 @@
         let answer3Id = $("#edit-option3").attr("data-id");
         let answer4Id = $("#edit-option4").attr("data-id");
 
+        let answer1 = $("#edit-answer1").is(":checked");
+        let answer2 = $("#edit-answer2").is(":checked");
+        let answer3 = $("#edit-answer3").is(":checked");
+        let answer4 = $("#edit-answer4").is(":checked");
+
         let Put = {
           Id: questionId,
           Text: QuestionText,
@@ -241,22 +302,26 @@
           Answers: [{
               Id: answer1Id,
               Text: PossibleAnswer1,
-              QuestionId: questionId
+              QuestionId: questionId,
+              Correct: answer1
             },
             {
               Id: answer2Id,
               Text: PossibleAnswer2,
-              QuestionId: questionId
+              QuestionId: questionId,
+              Correct: answer2
             },
             {
               Id: answer3Id,
               Text: PossibleAnswer3,
-              QuestionId: questionId
+              QuestionId: questionId,
+              Correct: answer3
             },
             {
               Id: answer4Id,
               Text: PossibleAnswer4,
-              QuestionId: questionId
+              QuestionId: questionId,
+              Correct: answer4
             }
           ]
         }
@@ -267,7 +332,7 @@
     });
   </script>
 
-  
+
 
 </body>
 

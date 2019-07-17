@@ -141,15 +141,19 @@ var editQuiz = (function () {
 
                 $("#edit-option1").attr("data-id", data.PossibleAnswers[0].Id);
                 $("#edit-option1").attr("data-question-id", data.PossibleAnswers[0].QuestionId);
+                $("#edit-answer1").prop("checked", data.PossibleAnswers[0].Correct);
 
                 $("#edit-option2").attr("data-id", data.PossibleAnswers[1].Id);
                 $("#edit-option2").attr("data-question-id", data.PossibleAnswers[1].QuestionId);
+                $("#edit-answer2").prop("checked", data.PossibleAnswers[1].Correct);
 
                 $("#edit-option3").attr("data-id", data.PossibleAnswers[2].Id);
                 $("#edit-option3").attr("data-question-id", data.PossibleAnswers[2].QuestionId);
+                $("#edit-answer3").prop("checked", data.PossibleAnswers[2].Correct);
 
                 $("#edit-option4").attr("data-id", data.PossibleAnswers[3].Id);
                 $("#edit-option4").attr("data-question-id", data.PossibleAnswers[3].QuestionId);
+                $("#edit-answer4").prop("checked", data.PossibleAnswers[3].Correct);
             })
 
     }
